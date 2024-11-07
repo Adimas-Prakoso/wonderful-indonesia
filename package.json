@@ -2,9 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite",
-        "start": "concurrently \"npm run build\" \"php artisan serve\" \"npm run dev\""
+        "build": "concurrently \"vite build\" \"php artisan serve\" \"npm run dev\"",
+        "dev": "vite"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
