@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wonderful Indonesia</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/index/app.css', 'resources/js/index/app.js'])
 </head>
 <body class="bg-white font-sans" x-data="navigation">
     <!-- Navigation -->
@@ -177,7 +177,7 @@
 
         <!-- Hero Content -->
         <div class="absolute inset-x-0 bottom-16 sm:bottom-20 flex justify-center z-20">
-            <a href="#explore" class="explore-btn bg-indonesia-red text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-red-700 transform hover:scale-105 transition-all duration-300 inline-flex items-center group shadow-xl">
+            <a href="/explore" class="explore-btn bg-indonesia-red text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-red-700 transform hover:scale-105 transition-all duration-300 inline-flex items-center group shadow-xl">
                 Explore Indonesia
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
