@@ -1,42 +1,4 @@
 import "./bootstrap";
-import Alpine from "alpinejs";
-
-// Define languages globally
-window.languages = {
-    en: {
-        name: "English",
-        flag: "/images/flags/en.svg",
-    },
-    id: {
-        name: "Bahasa Indonesia",
-        flag: "/images/flags/id.svg",
-    },
-    zh: {
-        name: "中文",
-        flag: "/images/flags/zh.svg",
-    },
-};
-
-// Import translations
-import { translations } from "./translations";
-window.translations = translations;
-
-// Initialize Alpine
-window.Alpine = Alpine;
-
-// Add default data
-document.addEventListener("alpine:init", () => {
-    Alpine.data("navigation", () => ({
-        mobileMenuOpen: false,
-        languageMenuOpen: false,
-        currentLang: "en",
-        languages: window.languages,
-        translations: window.translations,
-    }));
-});
-
-// Start Alpine
-Alpine.start();
 
 // DOM content loaded handler
 document.addEventListener("DOMContentLoaded", () => {

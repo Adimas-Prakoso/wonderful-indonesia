@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/index/app.css', 'resources/js/index/app.js'])
 </head>
-<body class="bg-white font-sans" x-data="navigation">
+<body class="bg-white font-sans">
     <!-- Navigation -->
     <nav class="bg-white/90 backdrop-blur-md shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,59 +18,16 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8 lg:space-x-12">
-                    <a href="#destinations" class="nav-link text-base lg:text-lg" x-text="translations[currentLang].destinations">Destinations</a>
-                    <a href="#culture" class="nav-link text-base lg:text-lg" x-text="translations[currentLang].culture">Culture</a>
-                    <a href="#rumah-adat" class="nav-link text-base lg:text-lg" x-text="translations[currentLang].traditional_houses">Traditional Houses</a>
-                    <a href="#culinary" class="nav-link text-base lg:text-lg" x-text="translations[currentLang].culinary">Culinary</a>
-                    <a href="#events" class="nav-link text-base lg:text-lg" x-text="translations[currentLang].events">Events</a>
-
-                    <!-- Language Switcher -->
-                    <div class="relative" @click.away="languageMenuOpen = false">
-                        <button @click="languageMenuOpen = !languageMenuOpen"
-                                class="flex items-center space-x-2 text-gray-700 hover:text-red-600 focus:outline-none">
-                            <span x-text="languages[currentLang].name">English</span>
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                            </svg>
-                        </button>
-
-                        <!-- Language Dropdown -->
-                        <div x-show="languageMenuOpen"
-                             x-transition:enter="transition ease-out duration-100"
-                             x-transition:enter-start="transform opacity-0 scale-95"
-                             x-transition:enter-end="transform opacity-100 scale-100"
-                             x-transition:leave="transition ease-in duration-75"
-                             x-transition:leave-start="transform opacity-100 scale-100"
-                             x-transition:leave-end="transform opacity-0 scale-95"
-                             class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-                             style="display: none;">
-                            <div class="py-1">
-                                <template x-for="(lang, code) in languages" :key="code">
-                                    <button @click="currentLang = code; languageMenuOpen = false"
-                                            class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-red-600"
-                                            :class="{ 'bg-gray-50': currentLang === code }">
-                                        <div class="flex items-center">
-                                            <img :src="lang.flag" class="w-5 h-5 mr-3 rounded-sm" :alt="lang.name">
-                                            <span x-text="lang.name"></span>
-                                        </div>
-                                    </button>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#destinations" class="nav-link text-base lg:text-lg">Destinations</a>
+                    <a href="#culture" class="nav-link text-base lg:text-lg">Culture</a>
+                    <a href="#rumah-adat" class="nav-link text-base lg:text-lg">Traditional Houses</a>
+                    <a href="#culinary" class="nav-link text-base lg:text-lg">Culinary</a>
+                    <a href="#events" class="nav-link text-base lg:text-lg">Events</a>
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center space-x-4">
-                    <!-- Mobile Language Switcher -->
-                    <button @click="languageMenuOpen = !languageMenuOpen"
-                            class="text-gray-700 hover:text-red-600 focus:outline-none">
-                        <img :src="languages[currentLang].flag" class="w-6 h-6 rounded-sm" :alt="languages[currentLang].name">
-                    </button>
-
-                    <!-- Mobile Menu Toggle -->
-                    <button @click="mobileMenuOpen = !mobileMenuOpen"
-                            class="text-gray-700 hover:text-red-600 focus:outline-none">
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-red-600 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -80,47 +37,13 @@
         </div>
 
         <!-- Mobile Navigation -->
-        <div x-show="mobileMenuOpen"
-             x-transition:enter="transition ease-out duration-200"
-             x-transition:enter-start="opacity-0 -translate-y-1"
-             x-transition:enter-end="opacity-100 translate-y-0"
-             x-transition:leave="transition ease-in duration-150"
-             x-transition:leave-start="opacity-100 translate-y-0"
-             x-transition:leave-end="opacity-0 -translate-y-1"
-             class="md:hidden"
-             style="display: none;">
+        <div id="mobile-menu" class="hidden md:hidden">
             <div class="px-4 pt-2 pb-3 space-y-2 bg-white shadow-lg">
-                <a href="#destinations" @click="mobileMenuOpen = false"
-                   class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md"
-                   x-text="translations[currentLang].destinations">Destinations</a>
-                <a href="#culture" @click="mobileMenuOpen = false"
-                   class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md"
-                   x-text="translations[currentLang].culture">Culture</a>
-                <a href="#rumah-adat" @click="mobileMenuOpen = false"
-                   class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md"
-                   x-text="translations[currentLang].traditional_houses">Traditional Houses</a>
-                <a href="#culinary" @click="mobileMenuOpen = false"
-                   class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md"
-                   x-text="translations[currentLang].culinary">Culinary</a>
-                <a href="#events" @click="mobileMenuOpen = false"
-                   class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md"
-                   x-text="translations[currentLang].events">Events</a>
-            </div>
-
-            <!-- Mobile Language Menu -->
-            <div x-show="languageMenuOpen"
-                 class="px-4 py-2 bg-gray-50 border-t border-gray-200"
-                 style="display: none;">
-                <div class="grid grid-cols-2 gap-2">
-                    <template x-for="(lang, code) in languages" :key="code">
-                        <button @click="currentLang = code; languageMenuOpen = false"
-                                class="flex items-center space-x-2 px-3 py-2 rounded-md"
-                                :class="{ 'bg-white shadow-sm': currentLang === code }">
-                            <img :src="lang.flag" class="w-5 h-5 rounded-sm" :alt="lang.name">
-                            <span x-text="lang.name" class="text-sm"></span>
-                        </button>
-                    </template>
-                </div>
+                <a href="#destinations" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md">Destinations</a>
+                <a href="#culture" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md">Culture</a>
+                <a href="#rumah-adat" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md">Traditional Houses</a>
+                <a href="#culinary" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md">Culinary</a>
+                <a href="#events" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-md">Events</a>
             </div>
         </div>
     </nav>
@@ -503,6 +426,71 @@
         </div>
     </section>
 
+    <!-- Email Subscription Section -->
+    <section class="bg-indonesia-red py-16 relative overflow-hidden">
+        <!-- Decorative background pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"1\" fill-rule=\"evenodd\"%3E%3Ccircle cx=\"3\" cy=\"3\" r=\"3\"/%3E%3C/g%3E%3C/svg%3E'); background-size: 24px 24px;"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-black mb-4">Stay Updated with Indonesian Tourism</h2>
+                <p class="text-black/90 text-lg mb-12">Subscribe to our newsletter for the latest updates on destinations, events, and special offers.</p>
+                <form id="newsletter-form" class="max-w-2xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-xl">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                        <div class="relative">
+                            <label for="name" class="block text-white text-sm font-medium mb-2">Full Name</label>
+                            <input 
+                                type="text" 
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name" 
+                                class="w-full px-6 py-3 rounded-lg bg-white text-gray-800 border-2 border-transparent focus:outline-none focus:border-red-400 shadow-lg transition-colors duration-300"
+                                required
+                            >
+                        </div>
+                        <div class="relative">
+                            <label for="email" class="block text-white text-sm font-medium mb-2">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email address" 
+                                class="w-full px-6 py-3 rounded-lg bg-white text-gray-800 border-2 border-transparent focus:outline-none focus:border-red-400 shadow-lg transition-colors duration-300"
+                                required
+                            >
+                        </div>
+                    </div>
+                    <button 
+                        type="submit" 
+                        class="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-red-400 to-red-500 text-gray-900 rounded-lg font-semibold hover:from-red-500 hover:to-red-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                    >
+                        Subscribe Now
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Popup -->
+    <div id="success-popup" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4 relative z-10 transform transition-all">
+            <div class="text-center">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 mb-4">
+                    <svg class="h-6 w-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg leading-6 font-medium text-gray-900 mb-2">Subscription Successful!</h3>
+                <p class="text-sm text-gray-500 mb-4">Thank you for subscribing to our newsletter. Please check your email for confirmation.</p>
+                <button id="close-popup" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 sm:py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -510,14 +498,6 @@
                 <div>
                     <h4 class="font-bold text-xl mb-6">About</h4>
                     <p class="text-gray-400 leading-relaxed">Wonderful Indonesia is the official tourism brand of Indonesia, promoting the country's beautiful destinations.</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-xl mb-6">Quick Links</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Destinations</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Plan Your Trip</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Travel Guide</a></li>
-                    </ul>
                 </div>
                 <div>
                     <h4 class="font-bold text-xl mb-6">Contact</h4>
@@ -546,7 +526,7 @@
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
                         </a>
                         <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-1.38-.896-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
                         </a>
                     </div>
                 </div>
