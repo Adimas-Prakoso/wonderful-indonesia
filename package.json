@@ -15,7 +15,10 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@google/generative-ai": "^0.21.0",
         "alpinejs": "^3.14.3",
-        "dotenv": "^16.4.5"
+        "async-g-i-s": "^1.5.5",
+        "dotenv": "^16.4.5",
+        "ol": "^10.3.1"
     }
 }

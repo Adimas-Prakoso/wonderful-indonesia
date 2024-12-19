@@ -33,42 +33,42 @@
                 $categories = [
                     [
                         'title' => 'Destinations',
-                        'link' => '/destinations',
+                        'link' => 'explore/destinations',
                         'icon' => file_get_contents(asset('svg/destination.svg'))
                     ],
                     [
                         'title' => 'Traditional Dances',
-                        'link' => '/traditional-dances',
+                        'link' => 'explore/traditional-dances',
                         'icon' => file_get_contents(asset('svg/traditional-dance.svg'))
                     ],
                     [
                         'title' => 'Batik',
-                        'link' => '/batik',
+                        'link' => 'explore/batik',
                         'icon' => file_get_contents(asset('svg/batik.svg'))
                     ],
                     [
                         'title' => 'Traditional Clothes',
-                        'link' => '/traditional-clothes',
+                        'link' => 'explore/traditional-clothes',
                         'icon' => file_get_contents(asset('svg/traditional-clothes.svg'))
                     ],
                     [
                         'title' => 'Traditional House',
-                        'link' => '/traditional-house',
+                        'link' => 'explore/traditional-house',
                         'icon' => file_get_contents(asset('svg/traditional-house.svg'))
                     ],
                     [
                         'title' => 'Traditional Weapon',
-                        'link' => '/traditional-weapon',
+                        'link' => 'explore/traditional-weapon',
                         'icon' => file_get_contents(asset('svg/traditional-weapon.svg'))
                     ],
                     [
                         'title' => 'Musical Instruments',
-                        'link' => '/musical-instruments',
+                        'link' => 'explore/musical-instruments',
                         'icon' => file_get_contents(asset('svg/musical-instrument.svg'))
                     ],
                     [
                         'title' => 'Food',
-                        'link' => '/food',
+                        'link' => 'explore/food',
                         'icon' => file_get_contents(asset('svg/food.svg'))
                     ],
                 ];

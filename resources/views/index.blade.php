@@ -473,7 +473,7 @@
     </section>
 
     <!-- Success Popup -->
-    <div id="success-popup" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+    <div id="success-popup" class="fixed inset-0 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="bg-white rounded-lg p-8 max-w-md mx-4 relative z-10 transform transition-all">
             <div class="text-center">

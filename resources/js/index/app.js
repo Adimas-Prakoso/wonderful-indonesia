@@ -1,6 +1,3 @@
-import './bootstrap';
-import { Slideshow } from './slideshow';
-
 // DOM content loaded handler
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize slideshow if hero section exists
@@ -34,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close popup when clicking the close button
     if (closePopupBtn) {
         closePopupBtn.addEventListener('click', () => {
-            successPopup.classList.add('hidden');
+            successPopup.classList.add('opacity-0', 'pointer-events-none');
         });
     }
     
@@ -42,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (successPopup) {
         successPopup.addEventListener('click', (e) => {
             if (e.target === successPopup) {
-                successPopup.classList.add('hidden');
+                successPopup.classList.add('opacity-0', 'pointer-events-none');
             }
         });
     }
@@ -138,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (response.ok) {
                     // Show success popup
-                    successPopup.classList.remove('hidden');
+                    successPopup.classList.remove('opacity-0', 'pointer-events-none');
                     subscriptionForm.reset();
                 } else {
                     throw new Error(data.error || 'Failed to subscribe');
