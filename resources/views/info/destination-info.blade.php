@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Destinasi - Wonderful Indonesia</title>
-    @vite(['resources/css/info/app.css', 'resources/js/info/app.js'])
+    @vite(['resources/css/destination-info/app.css', 'resources/js/destination-info/app.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
 </head>
 <body class="bg-gray-50">
@@ -49,7 +49,7 @@
                 <div class="lg:col-span-2 space-y-8">
                     <!-- Deskripsi -->
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-2xl font-bold mb-4">Tentang Destinasi</h2>
+                        <h2 class="text-2xl font-bold mb-4">About Destination</h2>
                         <template x-if="!description">
                             <div class="flex items-center space-x-2">
                                 <div class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"></div>
@@ -61,7 +61,7 @@
 
                     <!-- Peta -->
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-2xl font-bold mb-4">Lokasi</h2>
+                        <h2 class="text-2xl font-bold mb-4">Location</h2>
                         <div id="map" class="w-full h-[400px] rounded-lg"></div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="space-y-8">
                     <!-- Weather Card -->
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-2xl font-bold mb-4">Cuaca Saat Ini</h2>
+                        <h2 class="text-2xl font-bold mb-4">Current Weather</h2>
                         <template x-if="weather">
                             <div class="text-center">
                                 <img :src="'https://openweathermap.org/img/wn/' + weather.icon + '@2x.png'" 
@@ -80,11 +80,11 @@
                                 <div class="text-gray-600 capitalize" x-text="weather.description"></div>
                                 <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
                                     <div>
-                                        <div class="text-gray-500">Kelembaban</div>
+                                        <div class="text-gray-500">Humidity</div>
                                         <div class="font-semibold" x-text="weather.humidity + '%'"></div>
                                     </div>
                                     <div>
-                                        <div class="text-gray-500">Kecepatan Angin</div>
+                                        <div class="text-gray-500">Wind Speed</div>
                                         <div class="font-semibold" x-text="weather.windSpeed + ' m/s'"></div>
                                     </div>
                                 </div>
@@ -94,10 +94,10 @@
 
                     <!-- Additional Info -->
                     <div class="bg-white rounded-xl shadow-lg p-6">
-                        <h2 class="text-2xl font-bold mb-4">Informasi Tambahan</h2>
+                        <h2 class="text-2xl font-bold mb-4">Additional Information</h2>
                         <div class="space-y-4">
                             <div>
-                                <div class="text-gray-500">Koordinat</div>
+                                <div class="text-gray-500">Coordinates</div>
                                 <div class="font-semibold" x-text="coordinates.lat + ', ' + coordinates.lng"></div>
                             </div>
                             <div>
@@ -106,7 +106,7 @@
                                     <a :href="'https://www.google.com/maps/search/' + encodeURIComponent(destination && destination.name || '')" 
                                        target="_blank" 
                                        class="text-blue-600 hover:text-blue-800">
-                                        Buka di Google Maps
+                                        Open in Google Maps
                                     </a>
                                 </div>
                             </div>
